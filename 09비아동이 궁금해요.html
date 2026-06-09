@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아기 까마귀 비비와 함께하는 광산구 비아동 탐험</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts - 어린이를 위한 둥글고 귀여운 나눔스퀘어라운드 및 푸른누리 스타일 서체 적용 -->
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nanum+Pen+Script&family=Gamja+Flower&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Gamja Flower', 'Gaegu', cursive, sans-serif;
+      background-color: #f0fdf4; /* 부드러운 연두색 배경 */
+      -webkit-tap-highlight-color: transparent;
+    }
+    .slide-enter {
+      animation: slideIn 0.5s ease-out forwards;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* 구름 둥둥 애니메이션 */
+    @keyframes floatCloud {
+      0% { transform: translateX(-10%); }
+      50% { transform: translateX(10%); }
+      100% { transform: translateX(-10%); }
+    }
+    .floating-cloud {
+      animation: floatCloud 20s infinite ease-in-out;
+    }
+    /* 날아다니는 까마귀 애니메이션 */
+    @keyframes flyCrow {
+      0% { transform: translate(0, 0) scaleX(1); }
+      45% { transform: translate(120px, -30px) scaleX(1); }
+      50% { transform: translate(120px, -30px) scaleX(-1); }
+      95% { transform: translate(0, 0) scaleX(-1); }
+      100% { transform: translate(0, 0) scaleX(1); }
+    }
+    .flying-crow {
+      animation: flyCrow 8s infinite linear;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden text-gray-800">
+
+  <!-- 배경 장식 (구름) -->
+  <div class="fixed top-12 left-10 w-32 h-12 bg-white rounded-full opacity-60 floating-cloud pointer-events-none"></div>
+  <div class="fixed top-24 right-12 w-40 h-16 bg-white rounded-full opacity-40 floating-cloud pointer-events-none" style="animation-delay: -5s;"></div>
+
+  <!-- 상단 헤더 -->
+  <header class="p-4 bg-yellow-100 border-b-4 border-yellow-300 text-center relative z-10">
+    <div class="max-w-md mx-auto">
+      <span class="text-sm text-amber-800 bg-amber-200 px-3 py-1 rounded-full">초등학교 2학년 사회 공부 방</span>
+      <h1 class="text-3xl text-amber-900 mt-2">비아동 탐험대</h1>
+      <p class="text-base text-amber-700">아기 까마귀 비비와 함께 비아동을 배워요!</p>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 영역 -->
+  <main class="flex-grow flex items-center justify-center p-4 relative z-10">
+    <div class="bg-white w-full max-w-lg rounded-3xl shadow-xl border-4 border-emerald-400 p-6 relative">
+      
+      <!-- 진행 표시 줄 -->
+      <div class="w-full bg-emerald-100 rounded-full h-3 mb-6 overflow-hidden">
+        <div id="progress-bar" class="bg-emerald-400 h-full transition-all duration-300" style="width: 14%;"></div>
+      </div>
+
+      <!-- 슬라이드 1: 환영해요 -->
+      <div id="slide-1" class="slide-content slide-enter">
+        <div class="text-center">
+          <div class="w-32 h-32 bg-amber-100 rounded-full mx-auto flex items-center justify-center border-4 border-amber-300 mb-4 relative overflow-hidden">
+            <!-- 까마귀 캐릭터 눈몸짓 디자인 -->
+            <div class="w-24 h-24 bg-zinc-800 rounded-full relative flex items-center justify-center">
+              <div class="absolute w-6 h-6 bg-amber-400 rounded-full -right-1 top-8"></div> <!-- 부리 -->
+              <div class="w-4 h-4 bg-white rounded-full absolute left-6 top-8 flex items-center justify-center">
+                <div class="w-2 h-2 bg-black rounded-full"></div> <!-- 눈 -->
+              </div>
+              <div class="w-4 h-4 bg-white rounded-full absolute left-12 top-8 flex items-center justify-center">
+                <div class="w-2 h-2 bg-black rounded-full"></div> <!-- 눈 -->
+              </div>
+              <div class="absolute bottom-2 text-white text-xs">안녕! 나는 비비야</div>
+            </div>
+          </div>
+          <h2 class="text-2xl text-emerald-800 mb-4">비아동에 온 것을 환영해!</h2>
+          <div class="bg-emerald-50 p-4 rounded-2xl text-left text-lg text-emerald-950 space-y-3">
+            <p>광주광역시 광산구에 있는 비아동은 정말 재미있고 신기한 이야기가 가득한 동네란다.</p>
+            <p>비비와 함께 신나는 탐험을 떠나면서 비아동의 매력을 하나씩 발견해 보자!</p>
+            <p class="text-sm text-center text-emerald-700 bg-white p-2 rounded-xl border border-emerald-200">
+              아래의 초록색 다음 버튼을 누르면 탐험이 시작돼요!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 슬라이드 2: 이름의 유래 -->
+      <div id="slide-2" class="slide-content hidden">
+        <h2 class="text-2xl text-amber-700 mb-4 text-center">비아동의 이름은 무슨 뜻일까?</h2>
+        <div class="bg-amber-50 p-4 rounded-2xl mb-4 text-lg text-amber-950">
+          <p class="mb-3">비아동이라는 이름은 특별한 모양에서 왔단다.</p>
+          <p class="bg-white p-3 rounded-xl border border-amber-200 text-center text-xl text-amber-900 mb-3">
+            "마을의 모습이 까마귀가 하늘을 훨훨 날아가고 있는 모양 같아요!"
+          </p>
+          <p>그래서 날아갈 비(飛) 자와 까마귀 아(鴉) 자를 써서 비아동이라고 부르게 되었어.</p>
+        </div>
+        
+        <!-- 대화형 버튼 놀이 -->
+        <div class="border-2 border-dashed border-amber-300 p-3 rounded-2xl text-center">
+          <p class="text-sm text-amber-800 mb-2">아래 노란 버튼을 눌러 비비를 날려보세요!</p>
+          <button onclick="makeCrowFly()" class="bg-amber-400 hover:bg-amber-500 text-amber-950 px-4 py-2 rounded-xl transition-all active:scale-95 text-base">
+            비비야, 하늘을 날아라!
+          </button>
+          <div class="h-20 w-full bg-sky-100 rounded-xl mt-3 relative overflow-hidden border border-sky-200">
+            <!-- 까마귀 요소 -->
+            <div id="interactive-crow" class="absolute left-4 top-6 w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center transition-all duration-1000 ease-in-out">
+              <div class="w-3 h-3 bg-amber-400 rounded-full absolute -right-1 top-3"></div>
+              <div class="w-2 h-2 bg-white rounded-full absolute left-2 top-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 슬라이드 3: 면적과 자연 환경 -->
+      <div id="slide-3" class="slide-content hidden">
+        <h2 class="text-2xl text-sky-700 mb-4 text-center">비아동은 얼마나 넓고 무엇이 있을까?</h2>
+        <div class="space-y-4">
+          <div class="bg-sky-50 p-4 rounded-2xl border border-sky-100 text-lg text-sky-950">
+            <p class="mb-2">비아동의 전체 크기(면적)는 이만큼이에요!</p>
+            <p class="bg-white p-2 rounded-xl border border-sky-300 text-center text-xl text-sky-800">
+              4.92 제곱킬로미터 (4.92㎢)
+            </p>
+            <p class="text-sm text-sky-700 mt-2 text-center">
+              우리가 다니는 초등학교 운동장이 무려 700개나 들어갈 수 있는 아주 넓은 크기랍니다!
+            </p>
+          </div>
+
+          <div class="bg-teal-50 p-4 rounded-2xl border border-teal-100 text-lg text-teal-950">
+            <p class="mb-2">비아동 주변에는 시원한 물줄기가 흘러요!</p>
+            <ul class="list-disc pl-5 space-y-1 text-base">
+              <li>웅장하고 아름답게 흐르는 영산강</li>
+              <li>졸졸졸 맑은 물이 흐르는 풍영정천</li>
+              <li>북쪽으로 조금만 걸어가면 전라남도 장성군이라는 이웃 동네를 만날 수 있어요.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 슬라이드 4: 역사와 사는 사람들의 변화 -->
+      <div id="slide-4" class="slide-content hidden">
+        <h2 class="text-2xl text-purple-700 mb-4 text-center">비아동의 역사와 변화</h2>
+        <div class="space-y-4 text-lg text-purple-950">
+          <div class="bg-purple-50 p-4 rounded-2xl border border-purple-100">
+            <p class="mb-2">비아동에는 몇 명의 이웃이 살고 있을까요?</p>
+            <p class="bg-white p-2 rounded-xl border border-purple-200 text-center text-xl text-purple-800">
+              사는 사람 수: 7,162명
+            </p>
+          </div>
+
+          <div class="bg-pink-50 p-4 rounded-2xl border border-pink-100 text-base space-y-2">
+            <p>비아동은 옛날에 어떤 모습이었을까요?</p>
+            <p>1935년에는 전라남도 광산군 비아면이라는 시골 마을이었어요. 옛날에는 대부분의 사람들이 논과 밭에서 맛있는 쌀과 채소를 기르는 농사를 지었답니다.</p>
+            <p>하지만 1997년에 광주광역시 광산구 비아동으로 이름이 바뀌면서, 큰 공장들이 모여있는 하남산업단지도 생기고 아파트와 새로운 상가들이 많이 들어와 아주 빠르게 발전하는 멋진 도시가 되었어요.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 슬라이드 5: 비아 5일장 탐정기 -->
+      <div id="slide-5" class="slide-content hidden">
+        <h2 class="text-2xl text-red-700 mb-4 text-center">전통이 가득한 비아 5일장</h2>
+        <div class="bg-red-50 p-4 rounded-2xl text-lg text-red-950 mb-4">
+          <p class="mb-2">비아동에는 아주 오래전부터 열리는 신나는 전통 시장인 비아 5일장이 있어요.</p>
+          <p class="bg-white p-2 rounded-xl border border-red-200 text-center text-red-800 text-xl">
+            매월 끝자리가 1일과 6일인 날에 열려요!
+          </p>
+          <p class="text-sm text-red-700 mt-2">
+            즉, 1일, 6일, 11일, 16일, 21일, 26일, 31일에 시장이 선답니다. 신선한 과일과 맛있는 간식이 가득해요!
+          </p>
+        </div>
+
+        <!-- 5일장 날짜 맞추기 탐정기 프로그램 -->
+        <div class="bg-white border-2 border-red-300 p-4 rounded-2xl">
+          <p class="text-center text-sm text-red-900 mb-2">오늘 시장이 열리는 날일까? 날짜를 입력해 보세요!</p>
+          <div class="flex gap-2 justify-center mb-3">
+            <input id="market-day-input" type="number" min="1" max="31" placeholder="날짜 (예: 16)" class="w-32 p-2 border-2 border-red-200 rounded-xl text-center text-lg focus:outline-none focus:border-red-400">
+            <button onclick="checkMarketDay()" class="bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded-xl transition-all text-base">
+              알아보기
+            </button>
+          </div>
+          <p id="market-result" class="text-center text-lg text-red-900 min-h-[1.5rem]"></p>
+        </div>
+      </div>
+
+      <!-- 슬라이드 6: 신나는 퀴즈 놀이 -->
+      <div id="slide-6" class="slide-content hidden">
+        <h2 class="text-2xl text-indigo-700 mb-4 text-center">비비와 함께하는 비아동 퀴즈!</h2>
+        
+        <div id="quiz-container" class="space-y-4">
+          <!-- 퀴즈 1 -->
+          <div class="quiz-step" id="quiz-step-1">
+            <p class="text-lg text-indigo-950 mb-3 bg-indigo-50 p-3 rounded-xl border border-indigo-200">
+              질문 1. 비아동이라는 이름의 뜻은 어떤 동물의 모습에서 나왔을까요?
+            </p>
+            <div class="grid grid-cols-1 gap-2">
+              <button onclick="answerQuiz(1, true)" class="w-full bg-white hover:bg-indigo-50 border-2 border-indigo-200 p-3 rounded-xl text-left text-base transition-colors">
+                1번. 하늘을 훨훨 날아가고 있는 까마귀 모양
+              </button>
+              <button onclick="answerQuiz(1, false)" class="w-full bg-white hover:bg-indigo-50 border-2 border-indigo-200 p-3 rounded-xl text-left text-base transition-colors">
+                2번. 물 속을 헤엄치고 있는 알록달록 물고기 모양
+              </button>
+            </div>
+          </div>
+
+          <!-- 퀴즈 2 -->
+          <div class="quiz-step hidden" id="quiz-step-2">
+            <p class="text-lg text-indigo-950 mb-3 bg-indigo-50 p-3 rounded-xl border border-indigo-200">
+              질문 2. 매 1일과 6일에 열리는 비아동의 유명한 전통 시장 이름은 무엇인가요?
+            </p>
+            <div class="grid grid-cols-1 gap-2">
+              <button onclick="answerQuiz(2, false)" class="w-full bg-white hover:bg-indigo-50 border-2 border-indigo-200 p-3 rounded-xl text-left text-base transition-colors">
+                1번. 비아 매일매일 시장
+              </button>
+              <button onclick="answerQuiz(2, true)" class="w-full bg-white hover:bg-indigo-50 border-2 border-indigo-200 p-3 rounded-xl text-left text-base transition-colors">
+                2번. 비아 5일장
+              </button>
+            </div>
+          </div>
+
+          <!-- 퀴즈 3 -->
+          <div class="quiz-step hidden" id="quiz-step-3">
+            <p class="text-lg text-indigo-950 mb-3 bg-indigo-50 p-3 rounded-xl border border-indigo-200">
+              질문 3. 비아동 주변을 흐르는 강과 하천의 이름은 무엇일까요?
+            </p>
+            <div class="grid grid-cols-1 gap-2">
+              <button onclick="answerQuiz(3, true)" class="w-full bg-white hover:bg-indigo-50 border-2 border-indigo-200 p-3 rounded-xl text-left text-base transition-colors">
+                1번. 영산강과 풍영정천
+              </button>
+              <button onclick="answerQuiz(3, false)" class="w-full bg-white hover:bg-indigo-50 border-2 border-indigo-200 p-3 rounded-xl text-left text-base transition-colors">
+                2번. 한강과 낙동강
+              </button>
+            </div>
+          </div>
+
+          <!-- 퀴즈 완료 화면 -->
+          <div id="quiz-success" class="hidden text-center p-4 bg-emerald-50 rounded-2xl border-2 border-emerald-300">
+            <p class="text-xl text-emerald-800 mb-2">참 잘했어요! 모든 문제를 맞혔어요!</p>
+            <p class="text-base text-emerald-950">비아동의 꼬마 박사가 된 것을 축하합니다!</p>
+          </div>
+
+          <p id="quiz-feedback" class="text-center text-lg min-h-[1.5rem]"></p>
+        </div>
+      </div>
+
+      <!-- 슬라이드 7: 더 알고 싶나요? (참고 링크) -->
+      <div id="slide-7" class="slide-content hidden">
+        <h2 class="text-2xl text-blue-700 mb-4 text-center">더 넓은 세상으로 떠나요!</h2>
+        <div class="bg-blue-50 p-4 rounded-2xl text-lg text-blue-950 space-y-4">
+          <p>비아동에 대해 더 신기하고 재미있는 소식이 궁금하다면 아래 링크를 부모님이나 선생님과 함께 방문해 보세요!</p>
+          
+          <div class="space-y-2">
+            <a href="https://www.gwangsan.go.kr/culture/clturVilageView.do?pageId=culture88&vilageSn=15" target="_blank" class="block bg-white p-3 rounded-xl border border-blue-200 hover:border-blue-400 text-blue-800 hover:text-blue-950 text-base transition-all text-center">
+              광산구 문화 관광 사이트 바로가기
+            </a>
+            <a href="https://www.gwangsan.go.kr/dong/contentsView.do?pageId=dong137" target="_blank" class="block bg-white p-3 rounded-xl border border-blue-200 hover:border-blue-400 text-blue-800 hover:text-blue-950 text-base transition-all text-center">
+              광산구 비아동 행정복지센터 바로가기
+            </a>
+          </div>
+
+          <div class="bg-white p-3 rounded-xl border border-blue-100 text-center text-sm text-blue-700">
+            오늘 배운 내용: 면적 4.92㎢, 인구 7,162명, 까마귀의 유래, 비아 5일장(1일, 6일)
+          </div>
+        </div>
+      </div>
+
+      <!-- 이전/다음 하단 제어 버튼 -->
+      <div class="flex justify-between items-center mt-8">
+        <button id="prev-btn" onclick="moveSlide(-1)" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-2xl transition-all disabled:opacity-30 disabled:pointer-events-none text-lg">
+          이전으로
+        </button>
+        <span class="text-base text-gray-500" id="slide-number">1 / 7</span>
+        <button id="next-btn" onclick="moveSlide(1)" class="bg-emerald-400 hover:bg-emerald-500 text-emerald-950 px-5 py-2.5 rounded-2xl transition-all disabled:opacity-30 disabled:pointer-events-none text-lg">
+          다음으로
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- 하단 저작권 표시 -->
+  <footer class="p-4 bg-emerald-100 border-t-4 border-emerald-200 text-center text-emerald-900 text-sm">
+    광주광역시 광산구 비아동 어린이 배움터
+  </footer>
+
+  <script>
+    // 현재 슬라이드 상태 관리
+    let currentSlide = 1;
+    const totalSlides = 7;
+
+    // Web Audio API 소리 합성 함수
+    function playSound(type) {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        
+        if (type === 'click') {
+          // 가벼운 버튼 클릭음
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.1);
+          gain.gain.setValueAtTime(0.1, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.1);
+        } else if (type === 'correct') {
+          // 맞았을 때 경쾌한 소리
+          const osc1 = ctx.createOscillator();
+          const osc2 = ctx.createOscillator();
+          const gain1 = ctx.createGain();
+          const gain2 = ctx.createGain();
+          
+          osc1.type = 'triangle';
+          osc1.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+          osc1.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
+          osc1.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2); // G5
+          osc1.frequency.setValueAtTime(1046.50, ctx.currentTime + 0.3); // C6
+          gain1.gain.setValueAtTime(0.15, ctx.currentTime);
+          gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+          
+          osc1.connect(gain1);
+          gain1.connect(ctx.destination);
+          osc1.start();
+          osc1.stop(ctx.currentTime + 0.5);
+        } else if (type === 'wrong') {
+          // 틀렸을 때 부저 소리
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(180, ctx.currentTime);
+          osc.frequency.linearRampToValueAtTime(120, ctx.currentTime + 0.3);
+          gain.gain.setValueAtTime(0.15, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.3);
+        }
+      } catch (e) {
+        console.log("Audio Error:", e);
+      }
+    }
+
+    // 슬라이드 이동 함수
+    function moveSlide(direction) {
+      playSound('click');
+      
+      // 현재 슬라이드 숨기기
+      document.getElementById(`slide-${currentSlide}`).classList.add('hidden');
+      
+      // 번호 갱신
+      currentSlide += direction;
+      if (currentSlide < 1) currentSlide = 1;
+      if (currentSlide > totalSlides) currentSlide = totalSlides;
+      
+      // 새로운 슬라이드 보이기
+      const nextSlideEl = document.getElementById(`slide-${currentSlide}`);
+      nextSlideEl.classList.remove('hidden');
+      nextSlideEl.classList.add('slide-enter');
+      
+      // UI 요소들 제어
+      document.getElementById('slide-number').innerText = `${currentSlide} / ${totalSlides}`;
+      document.getElementById('progress-bar').style.width = `${(currentSlide / totalSlides) * 100}%`;
+      
+      // 이전/다음 버튼 활성/비활성 처리
+      document.getElementById('prev-btn').disabled = (currentSlide === 1);
+      document.getElementById('next-btn').disabled = (currentSlide === totalSlides);
+    }
+
+    // 슬라이드 2: 까마귀 날리기 놀이
+    function makeCrowFly() {
+      playSound('click');
+      const crow = document.getElementById('interactive-crow');
+      crow.style.left = '80%';
+      crow.style.backgroundColor = '#fbbf24'; // 색상이 노랗게 변하는 비비
+      
+      setTimeout(() => {
+        crow.style.left = '10%';
+        crow.style.backgroundColor = '#27272a';
+      }, 1500);
+    }
+
+    // 슬라이드 5: 5일장 탐정기 함수
+    function checkMarketDay() {
+      const inputVal = document.getElementById('market-day-input').value;
+      const resultEl = document.getElementById('market-result');
+      
+      if (!inputVal) {
+        resultEl.innerText = "날짜를 숫자로 써주세요!";
+        resultEl.className = "text-center text-lg text-amber-700";
+        playSound('wrong');
+        return;
+      }
+      
+      const day = parseInt(inputVal);
+      if (day < 1 || day > 31) {
+        resultEl.innerText = "한 달은 1일부터 31일까지 있어요!";
+        resultEl.className = "text-center text-lg text-amber-700";
+        playSound('wrong');
+        return;
+      }
+
+      // 끝자리가 1 또는 6인 날 검사
+      const lastDigit = day % 10;
+      if (lastDigit === 1 || lastDigit === 6) {
+        resultEl.innerText = `우와! ${day}일은 신나는 비아 5일장이 열리는 날이에요! 🍏`;
+        resultEl.className = "text-center text-lg text-emerald-600";
+        playSound('correct');
+      } else {
+        resultEl.innerText = `아쉬워요, ${day}일은 장날이 아니에요. 다음 날짜를 알아볼까요?`;
+        resultEl.className = "text-center text-lg text-gray-500";
+        playSound('wrong');
+      }
+    }
+
+    // 슬라이드 6: 퀴즈 놀이 관련 데이터 및 함수
+    let currentQuizStep = 1;
+    function answerQuiz(step, isCorrect) {
+      const feedbackEl = document.getElementById('quiz-feedback');
+      
+      if (isCorrect) {
+        playSound('correct');
+        feedbackEl.innerText = "정답이에요! 참 잘했어요! 🎉";
+        feedbackEl.className = "text-center text-lg text-emerald-600";
+        
+        setTimeout(() => {
+          feedbackEl.innerText = "";
+          document.getElementById(`quiz-step-${step}`).classList.add('hidden');
+          
+          if (step < 3) {
+            currentQuizStep = step + 1;
+            document.getElementById(`quiz-step-${currentQuizStep}`).classList.remove('hidden');
+          } else {
+            document.getElementById('quiz-success').classList.remove('hidden');
+          }
+        }, 1200);
+      } else {
+        playSound('wrong');
+        feedbackEl.innerText = "다시 한번 생각해 볼까요? 할 수 있어요!";
+        feedbackEl.className = "text-center text-lg text-red-500";
+      }
+    }
+  </script>
+</body>
+</html>
